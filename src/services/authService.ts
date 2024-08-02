@@ -16,3 +16,8 @@ export const loginUser = async (username: string, password: string) => {
   const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1d" });
   return token;
 };
+
+export const getAllUsers = async () => {
+  const users = await User.findAll();
+  return users;
+};

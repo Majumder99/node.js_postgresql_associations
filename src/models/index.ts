@@ -1,4 +1,4 @@
-import sequelize from "../config/database";
+import sequelize from "../config/db";
 import authorModel from "./author";
 import bookModel from "./book";
 import userModel from "./user";

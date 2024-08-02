@@ -15,3 +15,8 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
   const token = await authService.loginUser(username, password);
   res.json({ token });
 });
+
+export const getAllusers = asyncHandler(async (req: Request, res: Response) => {
+  const users = await authService.getAllUsers();
+  res.json({ users });
+});

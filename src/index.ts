@@ -6,6 +6,7 @@ import bookRoutes from "./routes/bookRoutes";
 import authRoutes from "./routes/authRoutes";
 import { errorHandler } from "./middlewares/errorHandler";
 import { protect } from "./middlewares/authMiddleware";
+import cors from "cors";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/authors", protect, authorRoutes);
