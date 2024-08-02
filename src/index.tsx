@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import { sequelize } from "./models";
 import authorRoutes from "./routes/authorRoutes";
 import bookRoutes from "./routes/bookRoutes";
+import authRoutes from "./routes/authRoutes";
 import { errorHandler } from "./middlewares/errorHandler";
+import { protect } from "./middlewares/authMiddleware";
 
 dotenv.config();
 
@@ -12,8 +14,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use("/api/authors", authorRoutes);
-app.use("/api/books", bookRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/authors", protect, authorRoutes);
+app.use("/api/books", protect, bookRoutes);
 
 app.use(errorHandler);
 
